@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Feira Virtual — Acesso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tipografia do projeto -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Design tokens (cores, sombras, raios) ===== */
+    :root{
+      --bg:#F1EEE7;          /* fundo do site */
+      --paper:#FFFFFF;       /* cartões/blocos */
+      --brand:#8A5A3B;       /* marrom principal */
+      --brand-2:#C1C6AA;     /* verde do banner */
+      --text:#2B2B2B;
+      --muted:#6F6F6F;
+      --border:#E8E4DD;
+      --radius:16px;
+      --shadow:0 6px 20px rgba(0,0,0,.06);
+    }
+
+    /* ===== Reset e base ===== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:"Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.5;
+    }
+    img{max-width:100%; display:block}
+
+    /* ===== Tipografia do guia ===== */
+    .h-banner  {font-family:"Gilda Display", serif; font-weight:400; font-size:48px; line-height:1.1}
+    .h-section {font-family:"Gilda Display", serif; font-weight:400; font-size:32px; line-height:1.2}
+    .h-product {font-family:"Gilda Display", serif; font-weight:400; font-size:40px; line-height:1.2}
+
+    .sub-banner{font:400 16px/1.4 "Montserrat", sans-serif; color:var(--muted)}
+    .text-16   {font:400 16px/1.6 "Montserrat", sans-serif}
+    .text-18-sb{font:600 18px/1.4 "Montserrat", sans-serif}
+    .text-14   {font:400 14px/1.6 "Montserrat", sans-serif}
+    .price-24  {font:700 24px/1.2 "Montserrat", sans-serif}
+    .cart-16   {font:400 16px/1.5 "Montserrat", sans-serif}
+
+    /* ===== Layout utilitário ===== */
+    .container{max-width:1200px; margin-inline:auto; padding:0 24px}
+    .grid{display:grid; gap:24px}
+    .grid-2{grid-template-columns:1.1fr .9fr}
+    @media (max-width:940px){ .grid-2{grid-template-columns:1fr} .h-banner{font-size:36px} .h-section{font-size:28px} }
+
+    /* ===== Header ===== */
+    .header{background:var(--brand); color:#fff}
+    .header .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 0}
+    .logo{display:flex; align-items:center; gap:12px}
+    .logo-badge{
+      width:36px; height:36px; border-radius:10px; background:#5E3E29; color:#fff;
+      display:grid; place-items:center; font-weight:700;
+    }
+    .brand-title{font-family:"Gilda Display", serif; font-weight:400; font-size:28px}
+
+    .menu{display:flex; gap:10px; flex-wrap:wrap}
+    .menu a{
+      text-decoration:none; color:#fff; padding:8px 12px; border-radius:10px;
+      font:600 16px "Montserrat", sans-serif; opacity:.95;
+    }
+    .menu a[aria-current="page"], .menu a:hover{background-color:rgba(255,255,255,.14); opacity:1}
+
+    /* ===== Banner / Hero ===== */
+    .hero{
+      background:var(--brand-2);
+      padding:40px 0 28px;
+      text-align:center;
+    }
+
+    /* ===== Cards / Form ===== */
+    .card{
+      background:var(--paper); border:1px solid var(--border);
+      border-radius:var(--radius); box-shadow:var(--shadow); padding:24px;
+    }
+    .card h2{margin:0 0 8px}
+    .subtitle{color:var(--muted)}
+
+    .field{display:grid; gap:8px; margin-bottom:14px}
+    .label{display:block; color:var(--muted); font:600 14px "Montserrat", sans-serif}
+    .input{
+      width:100%; background:#fff; border:1px solid var(--border); border-radius:12px;
+      padding:12px 14px; font:400 16px "Montserrat", sans-serif;
+    }
+    .input:focus{outline:3px solid #E3D6CB; border-color:transparent}
+
+    .row{display:grid; gap:12px}
+    @media (min-width:640px){ .row{grid-template-columns:1fr 1fr} }
+
+    .actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:8px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      border:0; border-radius:999px; padding:12px 20px; cursor:pointer;
+      background:var(--brand); color:#fff; font:700 16px "Montserrat", sans-serif;
+    }
+    .btn:hover{filter:brightness(.95)}
+    .btn.outline{background:transparent; color:var(--brand); border:1px solid var(--brand)}
+    .link{color:var(--brand); text-decoration:none; font:600 16px "Montserrat", sans-serif}
+    .link:hover{text-decoration:underline}
+
+    /* ===== Footer simples (mesmo padrão visual) ===== */
+    .footer{margin:48px 0 24px}
+    .footer .cols{display:grid; gap:20px; grid-template-columns:repeat(3,1fr)}
+    .footer .card{background:#F6F3ED}
+    @media (max-width:940px){ .footer .cols{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container wrap">
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true">FV</div>
+        <div class="brand-title">Feira Virtual</div>
+      </div>
+      <nav class="menu" aria-label="Navegação principal">
+        <a href="#" role="menuitem">Página Inicial</a>
+        <a href="#" role="menuitem">Produtores</a>
+        <a href="pagina-5-artesanatos.html" role="menuitem">Artesanatos</a>
+        <a href="#" role="menuitem">Categorias</a>
+        <a href="pagina-3-acesso.html" aria-current="page" role="menuitem">Entrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner / Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="sub-banner">Feira Virtual</p>
+      <h1 class="h-banner">Acesse sua Conta</h1>
+      <p class="text-16">Bem-vindo(a) de volta! Faça login para continuar.</p>
+    </div>
+  </section>
+
+  <!-- Conteúdo -->
+  <main class="container" style="padding:28px 0 40px">
+    <div class="grid grid-2">
+      <!-- Login -->
+      <section class="card" aria-labelledby="login-title">
+        <h2 id="login-title" class="h-section">Entrar</h2>
+        <p class="subtitle text-16">Informe seu e-mail e senha para acessar sua conta.</p>
+
+        <form action="#" method="post" novalidate>
+          <div class="field">
+            <label for="login-email" class="label">E-mail</label>
+            <input id="login-email" name="email" type="email" class="input" placeholder="seuemail@exemplo.com" required autocomplete="username">
+          </div>
+
+          <div class="field">
+            <label for="login-senha" class="label">Senha</label>
+            <input id="login-senha" name="password" type="password" class="input" placeholder="••••••••" required autocomplete="current-password">
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit">Entrar</button>
+            <a class="link" href="#">Esqueci a senha</a>
+          </div>
+        </form>
+      </section>
+
+      <!-- Cadastro rápido -->
+      <aside class="card" aria-labelledby="cadastro-title">
+        <h2 id="cadastro-title" class="h-section">Cadastrar</h2>
+        <p class="subtitle text-16">Ainda não tem conta? Faça seu cadastro.</p>
+
+        <form action="#" method="post" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="cad-nome" class="label">Nome</label>
+              <input id="cad-nome" name="nome" type="text" class="input" placeholder="Seu nome completo" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="cad-telefone" class="label">Telefone</label>
+              <input id="cad-telefone" name="telefone" type="tel" class="input" placeholder="(DDD) 00000-0000" inputmode="tel" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="cad-email" class="label">E-mail</label>
+            <input id="cad-email" name="email" type="email" class="input" placeholder="seuemail@exemplo.com" inputmode="email" autocomplete="email">
+          </div>
+
+          <div class="field">
+            <label for="cad-senha" class="label">Senha</label>
+            <input id="cad-senha" name="password" type="password" class="input" placeholder="Crie uma senha" autocomplete="new-password">
+          </div>
+
+          <div class="actions">
+            <button class="btn outline" type="submit">Cadastrar</button>
+            <span class="text-16" style="color:var(--muted)">Já tenho conta</span>
+          </div>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer simples opcional -->
+  <footer class="footer container">
+    <div class="cols">
+      <div class="card">
+        <h3 class="h-section" style="font-size:24px">Feira Virtual</h3>
+        <p class="text-14">Conectando você a pequenos produtores: do campo à sua mesa.</p>
+      </div>
+      <div class="card">
+        <h3 class="h-section" style="font-size:24px">Navegação</h3>
+        <p class="text-16">Página Inicial • Produtores • Categorias • Novidades</p>
+      </div>
+      <div class="card">
+        <h3 class="h-section" style="font-size:24px">Informações</h3>
+        <p class="text-14">Fale Conosco • Termos de Uso • Política de Privacidade</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
