@@ -149,6 +149,37 @@
     .foot{display:grid; gap:16px; grid-template-columns:repeat(3,1fr)}
     .foot .card{background:#F6F3ED}
     @media (max-width:980px){ .foot{grid-template-columns:1fr} }
+
+    /* ===== FIX: grade e imagens dos produtos ===== */
+
+/* Grade fluida: quantas colunas couberem, min 220px cada */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap:14px;
+}
+
+/* Garante que o card não “alargue” a coluna à força */
+.p-card{ min-width:0; }
+
+/* Área da imagem do card: altura fixa e sem vazamento */
+.p-card .img{
+  height:160px;           /* ajuste fino: 140–180px conforme teu gosto */
+  overflow:hidden;
+}
+
+/* Imagem ocupa 100% da área, sem distorcer e sem sair do card */
+.p-card .img img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;       /* corta o excesso mantendo proporção */
+}
+
+/* (Opcional) padroniza miniaturas do upload/preview */
+.preview .thumb{ width:120px; height:90px; }
+.preview .thumb img{ width:100%; height:100%; object-fit:cover; }
+
   </style>
 </head>
 <body>
@@ -534,4 +565,5 @@ renderLista();
   </script>
 </body>
 </html>
+
 
